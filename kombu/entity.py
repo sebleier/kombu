@@ -191,7 +191,7 @@ class Exchange(MaybeChannelBound):
         """
         properties = properties or {}
         properties["delivery_mode"] = delivery_mode or self.delivery_mode
-        return self.channel.prepare_message(message_data,
+        return self.channel.prepare_message(body,
                                             properties=properties,
                                             priority=priority,
                                             content_type=content_type,
@@ -387,7 +387,7 @@ class Binding(MaybeChannelBound):
         """Declare queue on the server.
 
         :keyword nowait: Do not wait for a reply.
-        :keyword passive: If set, the server will not create the queue. 
+        :keyword passive: If set, the server will not create the queue.
             The client can use this to check whether a queue exists
             without modifying the server state.
 
